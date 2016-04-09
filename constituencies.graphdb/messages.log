@@ -4734,3 +4734,4 @@ Storage files: (filename : modification date - size)
 2016-04-09 22:17:33.220+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by scheduler for time threshold [178]:  Check pointing completed
 2016-04-09 22:17:33.225+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] Log Rotation [0]:  Starting log pruning.
 2016-04-09 22:17:33.230+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] Log Rotation [0]:  Log pruning complete.
+2016-04-09 23:13:04.996+0000 WARN  [o.n.k.i.c.MonitorGc] GC Monitor: Application threads blocked for 775ms.
