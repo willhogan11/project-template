@@ -61,7 +61,7 @@ CREATE(Mayo:constit{Name:"Mayo",Population:120332,Seats:4})
 <br>
 #####Political Party Node:
 
-|  *Node*   | *Label* | *Property*  | *Property* | *Property* | *Property* |
+|  *Node*   | *Label* | *Property 1*  | *Property 2* | *Property 3* | *Property 4* |
 |:--------:|:------:|:-------:|:-----------:|:----------:|:---------:|
 | **Party**| FineGael | FirstName | Surname | Gender | IsElected |
 
@@ -145,13 +145,24 @@ RETURN
 ORDER BY Party_Candidate_Count DESC;
 ```
 
-#### Query three title
-This query retreives the Bacon number of an actor...
+#### Query Three - Elected Male / Female Statistics
+This query returns details about the amount of available seats in the area, plus the amount Elected 
+Male / Female candidates and the Number of Elected Female percentages ordered from High to Low. 
+
+I started by matching the relationships and used a where clause to breakdown the result set into Candidates that are Female and 
+got elected. From there i used some math to calculate the remaining columns based on previous Counts of Available seats and Female Elected counts. 
 ```cypher
 MATCH
-	(Bacon)
-RETURN
-	Bacon;
+	(con)-[r:CONSTITUENCY_OF]->(can)<-[m:MEMBER]-(p)
+	WHERE can.IsElected = true 
+		AND can.Gender = "Female"
+RETURN 
+	DISTINCT(con.Name) AS Area, 
+	con.Seats AS AvailableSeats, 
+        (con.Seats - COUNT(can.Gender = "Female")) AS Elected_M_Count,
+	COUNT(can.Gender = "Female") AS Elected_F_Count,
+        (COUNT(can.Gender = "Female") * 100 / con.Seats + "%") AS Elected_F_P
+ORDER BY Elected_F_P DESC;
 ```
 
 ---
