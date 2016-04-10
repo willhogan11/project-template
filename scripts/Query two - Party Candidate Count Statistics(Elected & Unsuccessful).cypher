@@ -1,5 +1,6 @@
 /*
-* This query returns different statistical information
+* Query two displays details about each party, ie the number if members in each and each parties performance,
+* like the Total elected number of candidates and unsuccessful candidates. This query is designed to reflect the Parties performance in the Election. 
 */
 
 MATCH(can)<-[m:MEMBER]-(p)
