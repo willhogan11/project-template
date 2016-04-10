@@ -15,13 +15,15 @@ There are three main parts that i focused on to source data and build my databas
 Based on the above Fields and values, I made general associations between Candidates, Parties and Constituencies in my project. 
 
 
+---
+
 ## Database
 Explain how you created your database, and how information is represented in it.
 
-#####Tools Used
+####Tools Used
 I used the Cypher query language to create and search my database. Cypher bares many similarities to SQL in it's Syntax, but is different in other ways. I also used the IDE Neo4j to interract and input all my writes and search queries in Cypher which was then stored in the Database. I also used Notepad++ for parsing and sorting the data into Cypher friendly format. 
 
-#####Data Sourcing
+####Data Sourcing
 I did alot of research on how best to implement and structure my database and of course what data i was going to use and where i was going to get it from. There was plenty of information on the internet, but really i was looking for something with most of the data in one place to avoid having to reference lots of locations and increase the workload when trying to piece together all the data, which in turn would have made things much more difficult when trying to parse that data into cypher friendly code. 
 
 After much searching, i found a useful CSV file from a website mentioned in Number 2 in the References section below, which gave me most of the data that i needed, however this was Pre-Election data and which obviously didn't contain any actual election results, so i then used some post analaysis data referenced in Number 4, to add to my main data set. 
@@ -31,9 +33,52 @@ I used Microsoft Excel to add various CYPHER code in columns, which i repeated d
 
 Once all my Nodes and relationships were ready, I emalgameted them all into one single ```.cypher``` file. Anyone who want to use this database, just needs to copy and paste the scripts form the one file and run in Neo4j or Console. 
 
-Here is a brief outline of the structure of each node, the properties that it holds and some examples of Cypher code that is ed to create each Node and Relationship
+Here is a brief outline of the structure of each node, the properties that it holds and some examples of Cypher code that is used to create each Node and Relationship.
+<br><br>
+#####Candidate Node:
 
+|  *Node*   | *Label* | *Property 1*  | *Property 2* | *Property 3* | *Property 4* |
+|:--------:|:------:|:-------:|:-----------:|:----------:|:---------:|
+| **Candidate**| EndaKenny | FirstName | Surname | Gender | IsElected |
 
+Corresponding Cypher Create statement:
+
+```cypher
+CREATE(EndaKenny:Candidate{FirstName:"Enda",Surname:"Kenny",Gender:"Male", IsElected: true})
+```
+<br>
+#####Constituency Node:
+
+|  *Node*   | *Label* | *Property 1*  | *Property 2* | *Property 3* |
+|:--------:|:------:|:-------:|:-----------:|:----------:|
+| **Constituency**| Mayo | Name | Population | Seats |
+
+Corresponding Cypher Create statement:
+
+```cypher
+CREATE(Mayo:constit{Name:"Mayo",Population:120332,Seats:4})
+```
+<br>
+#####Political Party Node:
+
+|  *Node*   | *Label* | *Property*  | *Property* | *Property* | *Property* |
+|:--------:|:------:|:-------:|:-----------:|:----------:|:---------:|
+| **Party**| FineGael | FirstName | Surname | Gender | IsElected |
+
+Corresponding Cypher Create statement:
+
+```cypher
+CREATE(FineGael:Party{Name:"FineGael"})
+```
+<br>
+#####Relationship Creation
+To create relationships i added specific lables to each node, which made things considerably easlier when performing multiple relationships in the one query. 
+Here's an example of how a created a Relationship Between the Parties, Candidates and Constituencies in one query:
+```cypher
+CREATE(Mayo)-[:CONSTITUENCY_OF]->(EndaKenny)<-[:MEMBER {role: "Leader"}]-(FineGael)
+```
+
+---
 
 ## Queries
 Summarise your three queries here.
@@ -108,6 +153,8 @@ MATCH
 RETURN
 	Bacon;
 ```
+
+---
 
 ## References
 1. [Neo4J website](http://neo4j.com/), the website of the Neo4j database.
