@@ -2,14 +2,24 @@
 ###### Will Hogan, G00318460
 
 ## Introduction
-Give a summary here of what your project is about.
+My project is completely based on what transpired during the recent General Elections in Ireland in 2016. It aims to supply the user with useful general and statistical information, based on data that i have collected using the references highlighted in the footer of this page. 
+
+There are three main parts that i focused on to source data and build my database:
+
+|  *Field*   | *Value*  |
+|:--------:|:-------------------------------------------:|
+| **Candidates**     	| The Politicians that ran in the recent elections |
+| **Parties**        	| The Political parties that each politician is associated with |
+| **Constituencies** 	| The locations or areas that each Politician works in |
+
+Based on the above Fields and values, I made general associations between Candidates, Parties and Constituencies in my project. 
 
 ## Database
 Explain how you created your database, and how information is represented in it.
 
 ## Queries
 Summarise your three queries here.
-Then explain them one by one in the following sections.
+
 
 #### Query one - Retrieve Candidates, Parties & Constituencies
 This query uses a three way relationship model to build / join the various nodes together. Each candidate node is used to match 
