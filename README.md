@@ -81,7 +81,12 @@ CREATE(Mayo)-[:CONSTITUENCY_OF]->(EndaKenny)<-[:MEMBER {role: "Leader"}]-(FineGa
 ---
 
 ## Queries
-Summarise your three queries here.
+I have selected three queries to work with that displays useful information to the user about the Election
+Query one retrieves and displays general information about each Candidate, like the party they represent and the Constituency that they work in. 
+
+Query two displays details about each party, ie the number if members in each and each parties performance, like the Total elected number of candidates and unsuccessful candidates. This query is designed to reflect the Parties performance in the Election. 
+
+Query three displays details about each genders performance in a particular Constituency, with breakdown by constituency and Gender. Percentages and count of won seats are calculated and displayed in eaxh column. 
 
 
 #### Query one - Retrieve Candidates, Parties & Constituencies
