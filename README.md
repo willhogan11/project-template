@@ -18,7 +18,6 @@ Based on the above Fields and values, I made general associations between Candid
 ---
 
 ## Database
-Explain how you created your database, and how information is represented in it.
 
 ####Tools Used
 I used the Cypher query language to create and search my database. Cypher bares many similarities to SQL in its Syntax, but is different in other ways. I also used the IDE Neo4j to interact and input all my writes and search queries in Cypher which was then stored in the Database. I also used Notepad++ for parsing and sorting the data into Cypher friendly format. 
