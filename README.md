@@ -14,8 +14,26 @@ There are three main parts that i focused on to source data and build my databas
 
 Based on the above Fields and values, I made general associations between Candidates, Parties and Constituencies in my project. 
 
+
 ## Database
 Explain how you created your database, and how information is represented in it.
+
+#####Tools Used
+I used the Cypher query language to create and search my database. Cypher bares many similarities to SQL in it's Syntax, but is different in other ways. I also used the IDE Neo4j to interract and input all my writes and search queries in Cypher which was then stored in the Database. I also used Notepad++ for parsing and sorting the data into Cypher friendly format. 
+
+#####Data Sourcing
+I did alot of research on how best to implement and structure my database and of course what data i was going to use and where i was going to get it from. There was plenty of information on the internet, but really i was looking for something with most of the data in one place to avoid having to reference lots of locations and increase the workload when trying to piece together all the data, which in turn would have made things much more difficult when trying to parse that data into cypher friendly code. 
+
+After much searching, i found a useful CSV file from a website mentioned in Number 2 in the References section below, which gave me most of the data that i needed, however this was Pre-Election data and which obviously didn't contain any actual election results, so i then used some post analaysis data referenced in Number 4, to add to my main data set. 
+
+####Creating the Database
+I used Microsoft Excel to add various CYPHER code in columns, which i repeated down through each row. Once i had completed this task, i then imported each file into Notepad++. I found this extremely useful as i was able to complete bulk removal of extra whitespace, tabs and other unwanted artifacts that remained from the CSV import. I was able to accomplish this with simple Find and replace all functions in Notpad++.
+
+Once all my Nodes and relationships were ready, I emalgameted them all into one single ```.cypher``` file. Anyone who want to use this database, just needs to copy and paste the scripts form the one file and run in Neo4j or Console. 
+
+Here is a brief outline of the structure of each node, the properties that it holds and some examples of Cypher code that is ed to create each Node and Relationship
+
+
 
 ## Queries
 Summarise your three queries here.
@@ -93,8 +111,8 @@ RETURN
 
 ## References
 1. [Neo4J website](http://neo4j.com/), the website of the Neo4j database.
-2. [Election 2016 Database Source](http://irish-elections.storyful.com/). I used this database source to work with for my project, it came in CSV format. 
-3. [Notepad++ Tricks](http://a4apphack.com/featured/tricks-with-notepad). Found this very useful for parsing plain text and removing unwanted
+2. [Election 2016 Database Source](http://irish-elections.storyful.com/). I used this database source to work with for my project, it came in CSV format.
+3. [Elected Candidates](http://www.rte.ie/news/election-2016/parties/fianna-fail/). I used this link, to factor in all elected candidates into my project. 
+4. [Notepad++ Tricks](http://a4apphack.com/featured/tricks-with-notepad). Found this very useful for parsing plain text and removing unwanted
 whitespaces etc, that would have remained after working with CSV file to create cypher code. 
-4. [Elected Candidates](http://www.rte.ie/news/election-2016/parties/fianna-fail/). I used this link, to factor in all elected candidates into my project. 
 5. [Stackoverflow example referenced](http://stackoverflow.com/questions/22616786/neo4j-cypher-stacking-results-with-union-and-with). This link came in handy when i was looking for stacking multiple resultsets vertically. 
